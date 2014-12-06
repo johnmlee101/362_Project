@@ -67,6 +67,7 @@
 /* All functions after main should be initialized here */
 char inchar(void);
 void outchar(char x);
+void setPosition(int x);
 
 
 /* Variable declarations */
@@ -184,28 +185,13 @@ interrupt 7 void RTI_ISR(void)
       //set PWM to  2ms
       //hold for 1s
       if(dispenseHold == 0 && servoPosition == 0) {
-        //set PWM to default state (1ms)
-        
-        //set reset variable
-        servoPosition = 1;
+        setPosition(0); //sets position to -90;
         dispenseHold = 5;
       } else if(dispenseHold > 0) {
        dispenseHold--;  
       }      
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+
       
       
       
@@ -260,13 +246,22 @@ char inchar(void) {
 }
 
 
+/*
+***********************************************************************                       
+  Set the new servo position	 		  		
+***********************************************************************
+*/
 
-
-void setPosition(void) {
-  
-  
-  
-  
+void setPosition(int x) {
+    //for x, 0 = -90, 1 = 0; 2 = 90;
+    if(x == 0){
+     //set PWM to 1ms 
+    } else if (x == 1){
+     //set PWM to 1.5ms 
+    } else {
+     //set PWM to 2ms 
+    }
+    servoPosition = 1;
   
 }
 
