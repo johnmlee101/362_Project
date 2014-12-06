@@ -103,6 +103,10 @@ int currentKey = 0;
 #define LINE1 = 0x80	// LCD line 1 cursor position
 #define LINE2 = 0xC0	// LCD line 2 cursor position
 
+#define row1 = PTT_PTT1;
+#define row2 = PTT_PTT2;
+#define row3 = PTT_PTT5;
+
 	 	   		
 /*	 	   		
 ***********************************************************************
@@ -207,12 +211,7 @@ interrupt 7 void RTI_ISR(void)
       RTICNT = 0;
       if(servoPosition == 1) {      //the pulse is ending
         //set PWM_DUTY to 0;
-<<<<<<< HEAD
         PWMDTY0 = 0;
-=======
-        PWM_PTY0 = 0x00;
-        
->>>>>>> origin/master
         servoPosition = 0;
       }
       
