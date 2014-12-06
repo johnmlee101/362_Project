@@ -196,7 +196,7 @@ interrupt 7 void RTI_ISR(void)
       RTICNT = 0;
       if(servoPosition == 1) {      //the pulse is ending
         //set PWM_DUTY to 0;
-        
+        PWMDTY0 = 0;
         servoPosition = 0;
       }
       
