@@ -13,7 +13,7 @@
    
    - Software Leader: < John Lee >      Signature: ______________________
 
-   - Interface Leader: < Josh Wrobleski >     Signature: ______________________
+   - Interface Leader: < Josh Wrobleski >     Signature: Josh Wroblewski
 
    - Peripheral Leader: < Kyunghoon Jung >    Signature: Kyunghoon Jung
 
