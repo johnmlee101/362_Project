@@ -130,6 +130,20 @@ void  initializations(void) {
 //RTI Initialisations for 2.048 ms
   RTICTL = 0x41;
   CRGINT = CRGINT | 0x80;
+  
+//PWM initializations
+  MODRR_MODRR0 = 0x01;
+  PWME_PWME0 = 0x01;
+  PWMPOL_PPOL0 = 0x00;
+  PWMPER0 = 0xFF;
+ 	PWMDTY0 = 0x00;
+  
+//SPI Baud rate 6Mbs
+  DDRM   = 0xFF;
+  SPICR1 = 0x50;
+  SPICR2 = 0x00;
+  SPIBR  = 0x01;
+  
 
 	      
 	      
