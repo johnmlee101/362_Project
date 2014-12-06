@@ -68,6 +68,14 @@
 char inchar(void);
 void outchar(char x);
 void setPosition(int x);
+void bco(char x);		// SCI buffered character output
+void shiftout(char);	// LCD drivers (written previously)
+void lcdwait(void);
+void send_byte(char);
+void send_i(char);
+void chgline(char);
+void print_c(char);
+void pmsglcd(char[]);
 
 
 /* Variable declarations */
@@ -137,6 +145,9 @@ void  initializations(void) {
   PWMPOL_PPOL0 = 0x00;
   PWMPER0 = 0xFF;
  	PWMDTY0 = 0x00;
+ 	PWMPRCLK = 0x70;
+ 	PWMCLK = 0x08;
+ 	PWMSCLA = 0x04;
   
 //SPI Baud rate 6Mbs
   DDRM   = 0xFF;
@@ -196,7 +207,12 @@ interrupt 7 void RTI_ISR(void)
       RTICNT = 0;
       if(servoPosition == 1) {      //the pulse is ending
         //set PWM_DUTY to 0;
+<<<<<<< HEAD
         PWMDTY0 = 0;
+=======
+        PWM_PTY0 = 0x00;
+        
+>>>>>>> origin/master
         servoPosition = 0;
       }
       
