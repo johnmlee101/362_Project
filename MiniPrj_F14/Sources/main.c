@@ -9,13 +9,13 @@
 
  Team Members:
 
-   - Team/Doc Leader: < ? >      Signature: ______________________
+   - Team/Doc Leader: < Kyunghoon Jung >      Signature: Kyunghoon Jung
    
-   - Software Leader: < ? >      Signature: ______________________
+   - Software Leader: < John Lee >      Signature: ______________________
 
-   - Interface Leader: < ? >     Signature: ______________________
+   - Interface Leader: < Josh Wrobleski >     Signature: ______________________
 
-   - Peripheral Leader: < ? >    Signature: ______________________
+   - Peripheral Leader: < Kyunghoon Jung >    Signature: Kyunghoon Jung
 
 
  Academic Honesty Statement:  In signing above, we hereby certify that we 
