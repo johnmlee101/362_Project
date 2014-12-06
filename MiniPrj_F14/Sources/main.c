@@ -68,6 +68,14 @@
 char inchar(void);
 void outchar(char x);
 void setPosition(int x);
+void bco(char x);		// SCI buffered character output
+void shiftout(char);	// LCD drivers (written previously)
+void lcdwait(void);
+void send_byte(char);
+void send_i(char);
+void chgline(char);
+void print_c(char);
+void pmsglcd(char[]);
 
 
 /* Variable declarations */
