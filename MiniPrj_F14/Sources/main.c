@@ -70,7 +70,6 @@ void outchar(char x);
 void setPosition(int x);
 void bco(char x);		// SCI buffered character output
 void shiftout(char);	// LCD drivers (written previously)
-voud_disp(void);
 void lcdwait(void);
 void send_byte(char);
 void send_i(char);
@@ -407,17 +406,6 @@ void shiftout(char x)
   lcdwait();
 
 }
-
-/*
-***********************************************************************
-  Display for LCD
-***********************************************************************
-*/
-
-void disp() {
-  
-}
-
 
 /*
 ***********************************************************************
