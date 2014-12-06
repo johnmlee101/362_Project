@@ -144,6 +144,13 @@ void  initializations(void) {
   SPICR2 = 0x00;
   SPIBR  = 0x01;
   
+//LCD initializations
+  PTT_PTT4 = 1;
+  PTT_PTT3 = 0;
+  send_i(LCDON);
+  send_i(TWOLINE);
+  send_i(LCDCLR);
+  lcdwait()
 
 	      
 	      
@@ -366,6 +373,118 @@ void setPosition(int x) {
     servoPosition = 1;
   
 }
+
+void shiftout(char x)
+
+{
+ 
+  // test the SPTEF bit: wait if 0; else, continue
+  // write data x to SPI data register
+  // wait for 30 cycles for SPI data to shift out 
+  while(SPISR_SPTEF == 0){
+  }
+  SPIDR = x;
+  lcdwait();
+
+}
+
+/*
+***********************************************************************
+  lcdwait: Delay for approx 2 ms
+***********************************************************************
+*/
+
+void lcdwait()
+{
+    int n = 8;
+    int m = 6000;
+    while(n!=0){
+      while(m){
+        m--;
+      }
+      n--;
+    }
+ 
+}
+
+/*
+*********************************************************************** 
+  send_byte: writes character x to the LCD
+***********************************************************************
+*/
+
+void send_byte(char x)
+{
+     // shift out character
+     // pulse LCD clock line low->high->low
+     // wait 2 ms for LCD to process data
+    shiftout(x);
+    PTT_PTT4 = 0;
+    PTT_PTT4 = 1;
+    PTT_PTT4 = 0;
+    lcdwait();
+}
+
+/*
+***********************************************************************
+  send_i: Sends instruction byte x to LCD  
+***********************************************************************
+*/
+
+void send_i(char x)
+{
+        // set the register select line low (instruction data)
+        // send byte
+    PTT_PTT2 = 0;
+    send_byte(x);
+}
+
+/*
+***********************************************************************
+  chgline: Move LCD cursor to position x
+  NOTE: Cursor positions are encoded in the LINE1/LINE2 variables
+***********************************************************************
+*/
+
+void chgline(char x)
+{
+    send_i(CURMOV);
+    send_i(x);
+    outchar('\r');
+    outchar('\n');
+
+}
+
+/*
+***********************************************************************
+  print_c: Print (single) character x on LCD            
+***********************************************************************
+*/
+ 
+void print_c(char x)
+{
+    PTT_PTT2 = 1;
+    send_byte(x);
+    outchar(x);
+
+}
+
+/*
+***********************************************************************
+  pmsglcd: print character string str[] on LCD
+***********************************************************************
+*/
+
+void pmsglcd(char str[])
+{
+    int i = 0;
+    while(str[i] != '\0'){
+      print_c(str[i]);
+      i++;
+    }
+
+}
+
 
 /*
 ***********************************************************************
