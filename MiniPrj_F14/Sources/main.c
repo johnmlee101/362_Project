@@ -137,6 +137,9 @@ void  initializations(void) {
   PWMPOL_PPOL0 = 0x00;
   PWMPER0 = 0xFF;
  	PWMDTY0 = 0x00;
+ 	PWMPRCLK = 0x70;
+ 	PWMCLK = 0x08;
+ 	PWMSCLA = 0x04;
   
 //SPI Baud rate 6Mbs
   DDRM   = 0xFF;
@@ -196,6 +199,7 @@ interrupt 7 void RTI_ISR(void)
       RTICNT = 0;
       if(servoPosition == 1) {      //the pulse is ending
         //set PWM_DUTY to 0;
+        PWM_PTY0 = 0x00;
         
         servoPosition = 0;
       }
