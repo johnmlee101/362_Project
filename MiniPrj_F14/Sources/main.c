@@ -73,6 +73,9 @@ void setPosition(int x);
 /* Variable declarations */
 int servoPosition = 0;
 int dispenseHold = 0;
+int mmHold = 0;
+int key[4] = {0,0,0,0};
+int currentKey = 0;
    	   			 		  			 		       
 
 /* Special ASCII characters */
@@ -171,18 +174,103 @@ interrupt 7 void RTI_ISR(void)
     if(RTICNT > 71){
       RTICNT = 0;
       if(servoPosition == 1) {      //the pulse is ending
-        //set PWM DUTY to 0
-        //reset variable
+        //set PWM_DUTY to 0;
+        
         servoPosition = 0;
       }
       
-      //Insert code for keypad
       
+      //row1 = 0;
+      //add a small delay
+      
+      /*if(!column1)
+      {
+        key[currentKey] = 1;
+      }
+      if(!column2)
+      {
+        key[currentKey] = 2;
+      }
+      if(!column3)
+      {
+        key[currentKey] = 3;
+      }
+      row1 = 1;
+      row2 = 0;
+      //delay
+      
+      if(!column1)
+      {
+        key[currentKey] = 4;
+        currentKey++;
+      }
+      if(!column2)
+      {
+        key[currentKey] = 5;
+        currentKey++;
+      }
+      if(!column3)
+      {
+        key[currentKey] = 6;
+        currentKey++;
+      }
+      row2 = 1;
+      row3 = 0;
+      //delay
+      
+      if(!column1)
+      {
+        key[currentKey] = 7;
+        currentKey++;
+      }
+      if(!column2)
+      {
+        key[currentKey] = 8;
+        currentKey++;
+      }
+      if(!column3)
+      {
+        key[currentKey] = 9;
+        currentKey++;
+      }
+      row3 = 1;
+      row4 = 0;
+      //delay
+      
+      if(!column1)
+      {
+        key[currentKey] = 10; //Star
+        currentKey = 0;
+      }
+      if(!column2)
+      {
+        key[currentKey] = 0;
+        currentKey++;
+      }
+      if(!column3)
+      {
+        key[currentKey] = 11; //hash
+        currentKey++;
+      }
+      
+      row4 = 1;
       
       
       
       //if keypad has right code 
-      //set PWM to  2ms
+      if(key[0] == 1)
+      {
+        if(key[1] == 2)
+        {
+          if(key[2] == 3)
+          {
+            if(key[3] == 4)
+            {
+              setPosition(3);  
+            }
+          }
+        }
+      } */
       //hold for 1s
       if(dispenseHold == 0 && servoPosition == 0) {
         setPosition(0); //sets position to -90;
