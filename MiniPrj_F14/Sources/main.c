@@ -3,9 +3,9 @@
  ECE 362 - Mini-Project C Source File - Fall 2014                    
 ***********************************************************************
 	 	   			 		  			 		  		
- Team ID: < ? >
+ Team ID: < 12 >
 
- Project Name: < ? >
+ Project Name: < M&M Dispenser >
 
  Team Members:
 
@@ -121,6 +121,11 @@ void  initializations(void) {
 /* Initialize peripherals */
             
 /* Initialize interrupts */
+
+//RTI Initialisations for 2.048 ms
+  RTICTL = 0x41;
+  CRGINT = CRGINT | 0x80;
+
 	      
 	      
 }
@@ -159,8 +164,11 @@ void main(void) {
 interrupt 7 void RTI_ISR(void)
 {
   	// clear RTI interrupt flagt 
-  	CRGFLG = CRGFLG | 0x80; 
- 
+  	CRGFLG = CRGFLG | 0x80;
+
+    if(RTICNT >71){
+      RTICNT = 0;
+    }
 
 }
 
