@@ -84,6 +84,7 @@ int dispenseHold = 0;
 int mmHold = 0;
 int key[4] = {0,0,0,0};
 int currentKey = 0;
+int RTICNT = 0;
    	   			 		  			 		       
 
 /* Special ASCII characters */
