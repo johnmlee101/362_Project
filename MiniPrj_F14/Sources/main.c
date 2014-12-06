@@ -205,18 +205,9 @@ interrupt 7 void RTI_ISR(void)
 
     if(RTICNT > 71){
       RTICNT = 0;
-      if(servoPosition == 1) {      //the pulse is ending
-        //set PWM_DUTY to 0;
-<<<<<<< HEAD
-        PWMDTY0 = 0;
-=======
-        PWM_PTY0 = 0x00;
-        
->>>>>>> origin/master
-        servoPosition = 0;
-      }
       
-      
+      if(dispenseHold == 0) {
+        setPosition(1);  
       //row1 = 0;
       //add a small delay
       
@@ -303,21 +294,19 @@ interrupt 7 void RTI_ISR(void)
           {
             if(key[3] == 4)
             {
-              setPosition(3);  
+              setPosition(3);
+              dispenseHold = 50;  
             }
           }
         }
       } */
-      //hold for 1s
-      if(dispenseHold == 0 && servoPosition == 0) {
-        setPosition(0); //sets position to -90;
-        dispenseHold = 5;
-      } else if(dispenseHold > 0) {
-       dispenseHold--;  
-      }      
+      
       
 
       
+      } else {
+       dispenseHold--; 
+      }
       
       
       
@@ -389,7 +378,6 @@ void setPosition(int x) {
      //set PWM to 2ms
      PWMDTY0 = 255/5; 
     }
-    servoPosition = 1;
   
 }
 
