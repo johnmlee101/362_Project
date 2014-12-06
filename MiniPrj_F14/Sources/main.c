@@ -70,7 +70,8 @@ void outchar(char x);
 
 
 /* Variable declarations */
-
+int servoPosition = 0;
+int dispenseHold = 0;
    	   			 		  			 		       
 
 /* Special ASCII characters */
@@ -166,9 +167,52 @@ interrupt 7 void RTI_ISR(void)
   	// clear RTI interrupt flagt 
   	CRGFLG = CRGFLG | 0x80;
 
-    if(RTICNT >71){
+    if(RTICNT > 71){
       RTICNT = 0;
+      if(servoPosition == 1) {      //the pulse is ending
+        //set PWM DUTY to 0
+        //reset variable
+        servoPosition = 0;
+      }
+      
+      //Insert code for keypad
+      
+      
+      
+      
+      //if keypad has right code 
+      //set PWM to  2ms
+      //hold for 1s
+      if(dispenseHold == 0 && servoPosition == 0) {
+        //set PWM to default state (1ms)
+        
+        //set reset variable
+        servoPosition = 1;
+        dispenseHold = 5;
+      } else if(dispenseHold > 0) {
+       dispenseHold--;  
+      }      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     }
+    RTICNT++;
+
 
 }
 
@@ -213,6 +257,17 @@ char inchar(void) {
   /* receives character from the terminal channel */
         while (!(SCISR1 & 0x20)); /* wait for input */
     return SCIDRL;
+}
+
+
+
+
+void setPosition(void) {
+  
+  
+  
+  
+  
 }
 
 /*
