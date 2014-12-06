@@ -13,7 +13,7 @@
    
    - Software Leader: < John Lee >      Signature: ______________________
 
-   - Interface Leader: < Josh Wrobleski >     Signature: Josh Wroblewski
+   - Interface Leader: < Josh Wroblewski >     Signature: Josh Wroblewski
 
    - Peripheral Leader: < Kyunghoon Jung >    Signature: Kyunghoon Jung
 
@@ -46,7 +46,7 @@
 
 ***********************************************************************
 
-  Date code started: < ? >
+  Date code started: < December 04, 2014 >
 
   Update history (add an entry every time a significant change is made):
 
