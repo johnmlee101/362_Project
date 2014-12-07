@@ -349,10 +349,11 @@
       (Type "COrSchematicDoc")
       (Frame
         (Placement "44 2 3 -1 -1 -9 -38 96 367 96 508")
-        (Scroll "-217 70")
+        (Scroll "-402 80")
         (Zoom "100")
         (Occurrence "/"))
       (Path
          "C:\USERS\HARRY\SKYDRIVE\PURDUE UNIVERSITY\JUNIOR\ECE 362\MINI PROJECT\362_PROJECT\MINI-PROJECT SCHEMATIC.DSN")
       (Schematic "SCHEMATIC1")
-      (Page "Freescale 9S12C32H"))))
+      (Page "Freescale 9S12C32H")))
+  (MPSSessionName "Harry"))
