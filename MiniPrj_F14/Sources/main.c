@@ -46,7 +46,7 @@
 
 ***********************************************************************
 
-  Date code started: < ? >
+  Date code started: < December 03, 2014 >
 
   Update history (add an entry every time a significant change is made):
 
