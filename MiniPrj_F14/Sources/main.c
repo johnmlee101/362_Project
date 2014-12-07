@@ -5,13 +5,13 @@
 	 	   			 		  			 		  		
  Team ID: < 12 >
 
- Project Name: < M&M Dispenser >
+ Project Name: < Candy Dispenser >
 
  Team Members:
 
    - Team/Doc Leader: < Kyunghoon Jung >      Signature: Kyunghoon Jung
    
-   - Software Leader: < John Lee >      Signature: ______________________
+   - Software Leader: < John Lee >      Signature: John Lee
 
    - Interface Leader: < Josh Wrobleski >     Signature: Josh Wroblewski
 
@@ -46,7 +46,7 @@
 
 ***********************************************************************
 
-  Date code started: < December 03, 2014 >
+  Date code started: < ? >
 
   Update history (add an entry every time a significant change is made):
 
@@ -69,6 +69,7 @@ char inchar(void);
 void outchar(char x);
 void setPosition(int x);
 void bco(char x);		// SCI buffered character output
+void disp(void);
 void shiftout(char);	// LCD drivers (written previously)
 void lcdwait(void);
 void send_byte(char);
@@ -76,6 +77,8 @@ void send_i(char);
 void chgline(char);
 void print_c(char);
 void pmsglcd(char[]);
+int getValue(int port);
+void delay(void);
 
 
 /* Variable declarations */
@@ -84,6 +87,16 @@ int dispenseHold = 0;
 int mmHold = 0;
 int key[4] = {0,0,0,0};
 int currentKey = 0;
+int rightPin = 0;
+int wrongPin = 0;
+int reset = 0;
+//int column1 = 0;
+//int column2 = 0;
+//int column3 = 0;
+int RTICNT = 0;
+int lastKey = 0;
+int defa[4] = {1,2,3,4};
+int newCounter = 0;
    	   			 		  			 		       
 
 /* Special ASCII characters */
@@ -102,6 +115,14 @@ int currentKey = 0;
 #define CURMOV 0xFE	// LCD cursor move instruction
 #define LINE1 = 0x80	// LCD line 1 cursor position
 #define LINE2 = 0xC0	// LCD line 2 cursor position
+
+//#define row4 PTT_PTT1
+#define row3 PTT_PTT5
+#define row2 PTT_PTT6
+#define row1 PTT_PTT7
+#define row4 PTT_PTT1
+
+
 
 	 	   		
 /*	 	   		
@@ -142,12 +163,12 @@ void  initializations(void) {
 //PWM initializations
   MODRR_MODRR0 = 0x01;
   PWME_PWME0 = 0x01;
-  PWMPOL_PPOL0 = 0x00;
+  PWMPOL_PPOL0 = 0x01;
   PWMPER0 = 0xFF;
  	PWMDTY0 = 0x00;
- 	PWMPRCLK = 0x70;
- 	PWMCLK = 0x08;
- 	PWMSCLA = 0x04;
+ 	PWMPRCLK = 0x07;
+ 	PWMCLK = 0x01;
+ 	PWMSCLA = 0x07;
   
 //SPI Baud rate 6Mbs
   DDRM   = 0xFF;
@@ -163,6 +184,12 @@ void  initializations(void) {
   send_i(LCDCLR);
   lcdwait();
 
+  ATDCTL2 = 0x80;
+  ATDCTL3 = 0x10;
+  ATDCTL4 = 0x85;
+  
+  DDRT = 0xFF;
+  
 	      
 	      
 }
@@ -177,7 +204,12 @@ void main(void) {
   	DisableInterrupts
 	initializations(); 		  			 		  		
 	EnableInterrupts;
-
+  reset = 1;
+  disp();
+  row1 = 0;
+  row2 = 0;
+  row3 = 0;
+  //row4 = 1;
  for(;;) {
   
 /* < start of your main loop > */ 
@@ -206,103 +238,194 @@ interrupt 7 void RTI_ISR(void)
     if(RTICNT > 71){
       RTICNT = 0;
       
-      if(dispenseHold == 0) {
-        setPosition(1);  
-      //row1 = 0;
-      //add a small delay
+      if(dispenseHold <= 0) {
+        setPosition(0); 
+      row1 = 1;
+      delay();
+      ATDCTL5 = 0x00;
+      while(!ATDSTAT0_SCF) {
+      }
+      //delay();
       
-      /*if(!column1)
+      //THIS BLOCK OF CODE IS SCANNING FOR THE KEYPAD
+      
+      if(ATDDR0H >= 0xD6 && lastKey != 1)
       {
         key[currentKey] = 1;
+        currentKey++;
+        lastKey = 1;
+        
       }
-      if(!column2)
+      ATDCTL5 = 0x01;
+      while(!ATDSTAT0_SCF) {
+      }
+      if(ATDDR1H >= 0xD6 && lastKey != 2)
       {
         key[currentKey] = 2;
+        currentKey++;
+        lastKey = 2;
+      }        
+      ATDCTL5 = 0x02;
+      while(!ATDSTAT0_SCF) {
       }
-      if(!column3)
+      if(ATDDR0H >= 0xD6 && lastKey != 3)
       {
         key[currentKey] = 3;
+        currentKey++;
+        lastKey = 3;
       }
-      row1 = 1;
-      row2 = 0;
-      //delay
+      row1 = 0;
+      delay();
+      row2 = 1;
+      delay();
+      ATDCTL5 = 0x00;
+      while(!ATDSTAT0_SCF) {
+      }
       
-      if(!column1)
+      if(ATDDR0H >= 0xD6 && lastKey != 4)
       {
         key[currentKey] = 4;
         currentKey++;
+        lastKey = 4;
       }
-      if(!column2)
+      ATDCTL5 = 0x01;
+      while(!ATDSTAT0_SCF) {
+      }
+      if(ATDDR1H >= 0xD6 && lastKey != 5)
       {
         key[currentKey] = 5;
         currentKey++;
+        lastKey = 5;
       }
-      if(!column3)
+      ATDCTL5 = 0x02;
+      while(!ATDSTAT0_SCF) {
+      }
+      if(ATDDR0H >= 0xD6 && lastKey != 6)
       {
         key[currentKey] = 6;
         currentKey++;
+        lastKey = 6;
       }
-      row2 = 1;
-      row3 = 0;
-      //delay
+      row2 = 0;
+      delay();
+      row3 = 1;
+      delay();
+      ATDCTL5 = 0x00;
+      while(!ATDSTAT0_SCF) {
+      }
       
-      if(!column1)
+      if(ATDDR0H >= 0xD6 && lastKey != 7)
       {
         key[currentKey] = 7;
         currentKey++;
+        lastKey = 7;
       }
-      if(!column2)
+      ATDCTL5 = 0x01;
+      while(!ATDSTAT0_SCF) {
+      }
+      if(ATDDR1H >= 0xD6 && lastKey != 8)
       {
         key[currentKey] = 8;
         currentKey++;
+        lastKey = 8;
       }
-      if(!column3)
+      ATDCTL5 = 0x02;
+      while(!ATDSTAT0_SCF) {
+      }
+      if(ATDDR0H >= 0xD6 && lastKey != 9)
       {
         key[currentKey] = 9;
         currentKey++;
+        lastKey = 9;
       }
-      row3 = 1;
-      row4 = 0;
-      //delay
+      row3 = 0;
+      delay();
       
-      if(!column1)
-      {
-        key[currentKey] = 10; //Star
-        currentKey = 0;
+      
+      
+      row4 = 1;
+      delay();
+      ATDCTL5 = 0x00;
+      while(!ATDSTAT0_SCF) {
       }
-      if(!column2)
+      
+      if(ATDDR0H >= 0xD6 && lastKey != 10)
+      {
+        //key[currentKey] = 10;
+        key[0] = 0;
+        key[1] = 0;
+        key[2] = 0;
+        key[3] = 0;
+        currentKey = 0;
+        lastKey = 10;
+      }
+      ATDCTL5 = 0x01;
+      while(!ATDSTAT0_SCF) {
+      }
+      if(ATDDR1H >= 0xD6 && lastKey != 0)
       {
         key[currentKey] = 0;
         currentKey++;
+        lastKey = 0;
       }
-      if(!column3)
+      ATDCTL5 = 0x02;
+      while(!ATDSTAT0_SCF) {
+      }
+      if(ATDDR0H >= 0xD6 && lastKey != 11 && key[0] == 2 && key[1] == 0 && key[2] == 1 && key[3] == 4)
       {
-        key[currentKey] = 11; //hash
-        currentKey++;
+        currentKey = 0;
+        newCounter = 1;
+        lastKey = 11;
+      } 
+      row4 = 0;
+      delay();
+      
+      
+      if(newCounter == 1 && currentKey == 4) {
+         defa[0] = key[0];
+         defa[1] = key[1];
+         defa[2] = key[2];
+         defa[3] = key[3];
+         key[0] = 0;
+         key[1] = 0;
+         key[2] = 0;
+         key[3] = 0;
+         newCounter = 0;
       }
       
-      row4 = 1;
       
+      if(currentKey >= 4) {
+
+       currentKey = 0; 
+       wrongPin = 1;
+       disp();
+      }
       
       
       //if keypad has right code 
-      if(key[0] == 1)
+      if(key[0] == defa[0])
       {
-        if(key[1] == 2)
+        outchar('1');
+        if(key[1] == defa[1])
         {
-          if(key[2] == 3)
+          outchar('2');
+          if(key[2] == defa[2])
           {
-            if(key[3] == 4)
+            outchar('3');
+            if(key[3] == defa[3])
             {
-              setPosition(3);
-              dispenseHold = 50;  
+              outchar('4');
+              setPosition(2);
+              dispenseHold = 50; 
+              rightPin = 1;
+              key[0] = 0;
+              key[3] = 0;
+              disp(); 
             }
           }
         }
-      } */
+      } 
       
-      
-
       
       } else {
        dispenseHold--; 
@@ -370,15 +493,89 @@ void setPosition(int x) {
     //for x, 0 = -90, 1 = 0; 2 = 90;
     if(x == 0){
      //set PWM to 1ms
-     PWMDTY0 = 255/10; 
+     PWMDTY0 = 255/23;   //19
     } else if (x == 1){
      //set PWM to 1.5ms
-     PWMDTY0 = (255/10)*1.5; 
+     PWMDTY0 = (255/19)*1.5; 
     } else {
      //set PWM to 2ms
-     PWMDTY0 = 255/5; 
+     PWMDTY0 = 255/9; 
     }
   
+}
+
+
+/*
+***********************************************************************                       
+  Set the new servo position	 		  		
+***********************************************************************
+*/
+int getValue(int port) {  
+    //port 1 is AN00 port2 is AN01 port3 is AN02
+    ATDCTL5 = 0x10;
+    
+    while(!ATDSTAT0_SCF) {
+    }
+    outchar(ATDDR0H);
+    if(port == 1) {
+      if(ATDDR0H > 0x4C){
+        return 1; 
+      } else {
+        return 0;
+      }    
+    }
+    if(port == 2) {
+      if(ATDDR1H > 0x4C){
+        return 1; 
+      } else {
+        return 0;
+      }    
+    }
+     if(port == 3) {
+      if(ATDDR2H > 0x4C){
+        return 1; 
+      } else {
+        return 0;
+      }    
+    }
+ }
+
+
+/*
+***********************************************************************
+  Display the LCD
+***********************************************************************
+*/
+
+void disp() {
+
+send_i(LCDCLR);
+chgline(0x80);
+
+if(rightPin)
+{
+  pmsglcd("Enjoy your");
+  chgline(0xC0);
+  pmsglcd("Candy!");
+}
+
+if(wrongPin)
+{
+  pmsglcd("PIN number");
+  chgline(0xC0);
+  pmsglcd("is incorrect");
+}
+
+if(reset)
+{
+ pmsglcd("Please enter");
+  chgline(0xC0);
+  pmsglcd("PIN number."); 
+}
+
+  rightPin = 0;
+  wrongPin = 0;
+  reset = 0;
 }
 
 void shiftout(char x)
@@ -405,6 +602,25 @@ void lcdwait()
 {
     int n = 8;
     int m = 6000;
+    while(n!=0){
+      while(m){
+        m--;
+      }
+      n--;
+    }
+ 
+}
+
+/*
+***********************************************************************
+  delay: Delay for approx 0.05 ms
+***********************************************************************
+*/
+
+void delay()
+{
+    int n = 100;
+    int m = 100;//150;
     while(n!=0){
       while(m){
         m--;
