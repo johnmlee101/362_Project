@@ -1,0 +1,358 @@
+(ExpressProject "Mini-Project Schematic"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74ac.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74act.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74als.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74as.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74f.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74h.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74hc.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74hct.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74l.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74ls.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74s.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\7400.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\abm.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\analog.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\analog_p.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\anl_misc.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\breakout.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\cd4000.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\dig_abm.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\dig_ecl.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\dig_gal.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\dig_misc.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\dig_pal.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\dig_prim.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\eval.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\evalaa.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\evalp.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\source.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\sourcstm.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\special.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\amplifier.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\arithmetic.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\atod.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\busdrivertransceiver.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\capsym.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\connector.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\counter.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\discrete.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\dram.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\electromechanical.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\fifo.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\filter.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\fpga.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\gate.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\latch.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\linedriverreceiver.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\mechanical.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\microcontroller.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\microprocessor.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\misc.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\misc2.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\misc3.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\misclinear.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\miscmemory.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\miscpower.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\muxdecoder.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\opamp.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\passivefilter.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pld.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\prom.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\regulator.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\shiftregister.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\sram.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\transistor.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File ".\mini-project schematic.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x"))
+  (Folder "Outputs")
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (PORTLEFT-R
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    ("MOTOR SERVO"
+      (FullPartName "MOTOR SERVO.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\ELECTROMECHANICAL.OLB")
+      (DeviceIndex "0"))
+    (GAL22V10C
+      (FullPartName "GAL22V10C.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\PLD.OLB")
+      (DeviceIndex "0"))
+    (VCC_BAR
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (0
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (8097
+      (FullPartName "8097.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (68HC11
+      (FullPartName "68HC11.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC11F1/LCC
+      (FullPartName "MC68HC11F1/LCC.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC11E9
+      (FullPartName "MC68HC11E9.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05P9-AVP
+      (FullPartName "MC68HC05P9-AVP.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05F12-PU
+      (FullPartName "MC68HC05F12-PU.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05B16
+      (FullPartName "MC68HC05B16.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC705F32-CPU
+      (FullPartName "MC68HC705F32-CPU.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HSC705C8A-CS
+      (FullPartName "MC68HSC705C8A-CS.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HSC705C4A-CFN
+      (FullPartName "MC68HSC705C4A-CFN.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05D9-P
+      (FullPartName "MC68HC05D9-P.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05D32-P
+      (FullPartName "MC68HC05D32-P.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05D32-FN
+      (FullPartName "MC68HC05D32-FN.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05CCV-FB
+      (FullPartName "MC68HC05CCV-FB.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05BD3-B
+      (FullPartName "MC68HC05BD3-B.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05BD3-P
+      (FullPartName "MC68HC05BD3-P.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC05B16-B
+      (FullPartName "MC68HC05B16-B.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC705G1-B
+      (FullPartName "MC68HC705G1-B.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC705X32-FU
+      (FullPartName "MC68HC705X32-FU.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0"))
+    (MC68HC705X32/FP
+      (FullPartName "MC68HC705X32/FP.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" "Library")
+      (Select "Design Resources" "Library"
+         "c:\program files\orcad\orcad_16.6_lite\tools\capture\library\pspice\74hct.olb"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -9 -38 0 200 0 407"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -9 -38 96 367 96 508")
+        (Scroll "-217 70")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path
+         "C:\USERS\HARRY\SKYDRIVE\PURDUE UNIVERSITY\JUNIOR\ECE 362\MINI PROJECT\362_PROJECT\MINI-PROJECT SCHEMATIC.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "Freescale 9S12C32H"))))
