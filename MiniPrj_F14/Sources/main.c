@@ -79,6 +79,8 @@ void print_c(char);
 void pmsglcd(char[]);
 int getValue(int port);
 void delay(void);
+void delayLong(void);
+
 
 
 /* Variable declarations */
@@ -97,6 +99,10 @@ int RTICNT = 0;
 int lastKey = 0;
 int defa[4] = {1,2,3,4};
 int newCounter = 0;
+char printArray[4] = {'0','0','0','0'};
+int isCorrect = 0;
+int passChange = 0;
+#define thresh 0xF6 //used to be 0xD6
    	   			 		  			 		       
 
 /* Special ASCII characters */
@@ -113,12 +119,12 @@ int newCounter = 0;
 #define LCDCLR 0x01	// LCD clear display command
 #define TWOLINE 0x38	// LCD 2-line enable command
 #define CURMOV 0xFE	// LCD cursor move instruction
-#define LINE1 = 0x80	// LCD line 1 cursor position
-#define LINE2 = 0xC0	// LCD line 2 cursor position
+#define LINE1 0x80	// LCD line 1 cursor position
+#define LINE2 0xC0	// LCD line 2 cursor position
 
 //#define row4 PTT_PTT1
-#define row3 PTT_PTT5
-#define row2 PTT_PTT6
+#define row3 PTT_PTT2  //5
+#define row2 PTT_PTT3  //6
 #define row1 PTT_PTT7
 #define row4 PTT_PTT1
 
@@ -150,15 +156,9 @@ void  initializations(void) {
   SCICR1 =  0x00; //$9C = 156
   SCICR2 =  0x0C; //initialize SCI for program-driven operation
   DDRB   =  0x10; //set PB4 for output mode
-  PORTB  =  0x10; //assert DTR pin on COM port
+  PORTB  =  0x10; //assert DTR pin on COM port\
 
-/* Initialize peripherals */
-            
-/* Initialize interrupts */
 
-//RTI Initialisations for 2.048 ms
-  RTICTL = 0x41;
-  CRGINT = CRGINT | 0x80;
   
 //PWM initializations
   MODRR_MODRR0 = 0x01;
@@ -175,20 +175,28 @@ void  initializations(void) {
   SPICR1 = 0x50;
   SPICR2 = 0x00;
   SPIBR  = 0x01;
+
+  ATDCTL2 = 0x80;
+  ATDCTL3 = 0x00;
+  ATDCTL4 = 0x85;
+  
+  DDRT = 0xFF;
+
   
 //LCD initializations
-  PTT_PTT4 = 1;
-  PTT_PTT3 = 0;
+  PTT_PTT6 = 1;
+  PTT_PTT5 = 0;
   send_i(LCDON);
   send_i(TWOLINE);
   send_i(LCDCLR);
   lcdwait();
-
-  ATDCTL2 = 0x80;
-  ATDCTL3 = 0x10;
-  ATDCTL4 = 0x85;
+  lcdwait();
   
-  DDRT = 0xFF;
+  //RTI Initialisations for 2.048 ms
+  RTICTL = 0x41;
+  CRGINT = CRGINT | 0x80;
+
+
   
 	      
 	      
@@ -209,7 +217,7 @@ void main(void) {
   row1 = 0;
   row2 = 0;
   row3 = 0;
-  //row4 = 1;
+  row4 = 0;
  for(;;) {
   
 /* < start of your main loop > */ 
@@ -249,30 +257,40 @@ interrupt 7 void RTI_ISR(void)
       
       //THIS BLOCK OF CODE IS SCANNING FOR THE KEYPAD
       
-      if(ATDDR0H >= 0xD6 && lastKey != 1)
+      if(ATDDR0H >= thresh && dispenseHold == 0)// && lastKey != 1)
       {
+        
         key[currentKey] = 1;
         currentKey++;
         lastKey = 1;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
         
       }
       ATDCTL5 = 0x01;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR1H >= 0xD6 && lastKey != 2)
+      if(ATDDR1H >= thresh && dispenseHold == 0)// && lastKey != 2)
       {
         key[currentKey] = 2;
         currentKey++;
         lastKey = 2;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }        
       ATDCTL5 = 0x02;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR0H >= 0xD6 && lastKey != 3)
+      if(ATDDR0H >= thresh && dispenseHold == 0)// && lastKey != 3)
       {
         key[currentKey] = 3;
         currentKey++;
         lastKey = 3;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }
       row1 = 0;
       delay();
@@ -282,29 +300,38 @@ interrupt 7 void RTI_ISR(void)
       while(!ATDSTAT0_SCF) {
       }
       
-      if(ATDDR0H >= 0xD6 && lastKey != 4)
+      if(ATDDR0H >= thresh && dispenseHold == 0)// && lastKey != 4)
       {
         key[currentKey] = 4;
         currentKey++;
         lastKey = 4;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }
       ATDCTL5 = 0x01;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR1H >= 0xD6 && lastKey != 5)
+      if(ATDDR1H >= thresh && dispenseHold == 0)// && lastKey != 5)
       {
         key[currentKey] = 5;
         currentKey++;
         lastKey = 5;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }
       ATDCTL5 = 0x02;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR0H >= 0xD6 && lastKey != 6)
+      if(ATDDR0H >= thresh && dispenseHold == 0)// && lastKey != 6)
       {
         key[currentKey] = 6;
         currentKey++;
         lastKey = 6;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }
       row2 = 0;
       delay();
@@ -314,29 +341,39 @@ interrupt 7 void RTI_ISR(void)
       while(!ATDSTAT0_SCF) {
       }
       
-      if(ATDDR0H >= 0xD6 && lastKey != 7)
+      if(ATDDR0H >= thresh && dispenseHold == 0)// && lastKey != 7)
       {
         key[currentKey] = 7;
         currentKey++;
         lastKey = 7;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }
       ATDCTL5 = 0x01;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR1H >= 0xD6 && lastKey != 8)
+      if(ATDDR1H >= thresh && dispenseHold == 0)// && lastKey != 8)
       {
         key[currentKey] = 8;
         currentKey++;
         lastKey = 8;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }
       ATDCTL5 = 0x02;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR0H >= 0xD6 && lastKey != 9)
+      if(ATDDR0H >= thresh && dispenseHold == 0)// && lastKey != 9)
       {
         key[currentKey] = 9;
         currentKey++;
         lastKey = 9;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
+        
       }
       row3 = 0;
       delay();
@@ -348,10 +385,14 @@ interrupt 7 void RTI_ISR(void)
       ATDCTL5 = 0x00;
       while(!ATDSTAT0_SCF) {
       }
-      
-      if(ATDDR0H >= 0xD6 && lastKey != 10)
+      //WHEN RESET KEY IS PRESSED ---------------------
+      if(ATDDR0H >= thresh  && dispenseHold == 0)
       {
         //key[currentKey] = 10;
+        send_i(LCDCLR);
+        lcdwait();
+        reset = 1;
+        disp();
         key[0] = 0;
         key[1] = 0;
         key[2] = 0;
@@ -362,25 +403,37 @@ interrupt 7 void RTI_ISR(void)
       ATDCTL5 = 0x01;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR1H >= 0xD6 && lastKey != 0)
+      if(ATDDR1H >= thresh && dispenseHold == 0)// && lastKey != 0)
       {
         key[currentKey] = 0;
         currentKey++;
         lastKey = 0;
+        disp();
+        dispenseHold = 3;
+        //delayLong();
       }
       ATDCTL5 = 0x02;
       while(!ATDSTAT0_SCF) {
       }
-      if(ATDDR0H >= 0xD6 && lastKey != 11 && key[0] == 2 && key[1] == 0 && key[2] == 1 && key[3] == 4)
+      //WHEN PASSWORD SET CODE IS PRESSED ----------------
+      if(ATDDR0H >= thresh && dispenseHold == 0 && key[0] == 3 && key[1] == 6 && key[2] == 2)
       {
+        send_i(LCDCLR);
+         key[0] = 0;
+         key[1] = 0;
+         key[2] = 0;
+         key[3] = 0;    
         currentKey = 0;
         newCounter = 1;
         lastKey = 11;
+        dispenseHold = 3;
+        pmsglcd("Enter new Pass");
+        //delayLong();
       } 
       row4 = 0;
       delay();
       
-      
+      //If setting a new key ------------------
       if(newCounter == 1 && currentKey == 4) {
          defa[0] = key[0];
          defa[1] = key[1];
@@ -391,42 +444,52 @@ interrupt 7 void RTI_ISR(void)
          key[2] = 0;
          key[3] = 0;
          newCounter = 0;
+         currentKey = 0;
+         passChange = 1;
+         disp();
+         
       }
       
-      
-      if(currentKey >= 4) {
 
-       currentKey = 0; 
-       wrongPin = 1;
-       disp();
-      }
       
       
-      //if keypad has right code 
+      //if keypad has right code --------------- 
       if(key[0] == defa[0])
       {
-        outchar('1');
         if(key[1] == defa[1])
         {
-          outchar('2');
           if(key[2] == defa[2])
           {
-            outchar('3');
             if(key[3] == defa[3])
             {
-              outchar('4');
               setPosition(2);
-              dispenseHold = 50; 
+              currentKey = 0;
+              dispenseHold = 5; //5 orignally 50 for debug 
               rightPin = 1;
               key[0] = 0;
+              key[1] = 0;
+              key[2] = 0;
               key[3] = 0;
+              isCorrect = 1;
               disp(); 
             }
           }
         }
       } 
       
-      
+     //If entered 4 keys ---------------------
+      if(currentKey >= 4 && isCorrect == 0) {
+       key[0] = 0;
+       key[1] = 0;
+       key[2] = 0;
+       key[3] = 0;
+       currentKey = 0;
+       wrongPin = 1;
+       disp();
+      } else if(currentKey >= 4 && isCorrect == 1) {
+        isCorrect = 0;  
+      }
+    
       } else {
        dispenseHold--; 
       }
@@ -493,13 +556,13 @@ void setPosition(int x) {
     //for x, 0 = -90, 1 = 0; 2 = 90;
     if(x == 0){
      //set PWM to 1ms
-     PWMDTY0 = 255/23;   //19
+     PWMDTY0 = 255/29;   //19
     } else if (x == 1){
      //set PWM to 1.5ms
      PWMDTY0 = (255/19)*1.5; 
     } else {
      //set PWM to 2ms
-     PWMDTY0 = 255/9; 
+     PWMDTY0 = 32; 
     }
   
 }
@@ -572,10 +635,20 @@ if(reset)
   chgline(0xC0);
   pmsglcd("PIN number."); 
 }
-
+if(passChange) {
+   pmsglcd("Pass Changed");
+}
+if(!reset && !wrongPin && !rightPin && !passChange){
+  printArray[0] = key[0] + 0x30;
+  printArray[1] = key[1] + 0x30;
+  printArray[2] = key[2] + 0x30;
+  printArray[3] = key[3] + 0x30;
+   pmsglcd(printArray);
+}
   rightPin = 0;
   wrongPin = 0;
   reset = 0;
+  passChange = 0;
 }
 
 void shiftout(char x)
@@ -630,6 +703,20 @@ void delay()
  
 }
 
+void delayLong()
+{
+    int n = 400;
+    int m = 6000;//150;
+    while(n!=0){
+      while(m){
+        m--;
+      }
+      n--;
+    }
+ 
+}
+
+
 /*
 *********************************************************************** 
   send_byte: writes character x to the LCD
@@ -642,9 +729,9 @@ void send_byte(char x)
      // pulse LCD clock line low->high->low
      // wait 2 ms for LCD to process data
     shiftout(x);
-    PTT_PTT4 = 0;
-    PTT_PTT4 = 1;
-    PTT_PTT4 = 0;
+    PTT_PTT6 = 0;
+    PTT_PTT6 = 1;
+    PTT_PTT6 = 0;
     lcdwait();
 }
 
@@ -658,7 +745,7 @@ void send_i(char x)
 {
         // set the register select line low (instruction data)
         // send byte
-    PTT_PTT2 = 0;
+    PTT_PTT4 = 0;
     send_byte(x);
 }
 
@@ -673,8 +760,6 @@ void chgline(char x)
 {
     send_i(CURMOV);
     send_i(x);
-    outchar('\r');
-    outchar('\n');
 
 }
 
@@ -686,10 +771,8 @@ void chgline(char x)
  
 void print_c(char x)
 {
-    PTT_PTT2 = 1;
+    PTT_PTT4 = 1;
     send_byte(x);
-    outchar(x);
-
 }
 
 /*
