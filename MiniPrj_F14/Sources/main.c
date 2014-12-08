@@ -177,7 +177,7 @@ void  initializations(void) {
   SPIBR  = 0x01;
 
   ATDCTL2 = 0x80;
-  ATDCTL3 = 0x00;
+  ATDCTL3 = 0x40;
   ATDCTL4 = 0x85;
   
   DDRT = 0xFF;
