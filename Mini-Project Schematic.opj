@@ -211,6 +211,16 @@
       (Sort User)))
   (DefaultLibraryBrowseDirectory "library\PSpice")
   (PartMRUSelector
+    (RESISTOR
+      (FullPartName "RESISTOR.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\PSPICE\EVALAA.OLB")
+      (DeviceIndex "0"))
+    (CAPACITOR
+      (FullPartName "CAPACITOR.Normal")
+      (LibraryName
+         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\PSPICE\EVALAA.OLB")
+      (DeviceIndex "0"))
     (PORTLEFT-R
       (LibraryName
          "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
@@ -322,16 +332,6 @@
       (FullPartName "MC68HC705G1-B.Normal")
       (LibraryName
          "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
-      (DeviceIndex "0"))
-    (MC68HC705X32-FU
-      (FullPartName "MC68HC705X32-FU.Normal")
-      (LibraryName
-         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
-      (DeviceIndex "0"))
-    (MC68HC705X32/FP
-      (FullPartName "MC68HC705X32/FP.Normal")
-      (LibraryName
-         "C:\PROGRAM FILES\ORCAD\ORCAD_16.6_LITE\TOOLS\CAPTURE\LIBRARY\MICROCONTROLLER.OLB")
       (DeviceIndex "0")))
   (GlobalState
     (FileView
@@ -349,8 +349,8 @@
       (Type "COrSchematicDoc")
       (Frame
         (Placement "44 2 3 -1 -1 -9 -38 96 367 96 508")
-        (Scroll "-402 80")
-        (Zoom "100")
+        (Scroll "33 199")
+        (Zoom "166")
         (Occurrence "/"))
       (Path
          "C:\USERS\HARRY\SKYDRIVE\PURDUE UNIVERSITY\JUNIOR\ECE 362\MINI PROJECT\362_PROJECT\MINI-PROJECT SCHEMATIC.DSN")

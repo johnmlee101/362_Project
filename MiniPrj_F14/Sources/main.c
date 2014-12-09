@@ -556,13 +556,13 @@ void setPosition(int x) {
     //for x, 0 = -90, 1 = 0; 2 = 90;
     if(x == 0){
      //set PWM to 1ms
-     PWMDTY0 = 255/29;   //19
+     PWMDTY0 = 32;//255/29;   //19
     } else if (x == 1){
      //set PWM to 1.5ms
      PWMDTY0 = (255/19)*1.5; 
     } else {
      //set PWM to 2ms
-     PWMDTY0 = 32; 
+     PWMDTY0 = 255/29;//32; 
     }
   
 }
