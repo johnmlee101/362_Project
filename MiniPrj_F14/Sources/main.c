@@ -26,7 +26,8 @@
 
 ***********************************************************************
 
- The objective of this Mini-Project is to .... < ? >
+ The objective of this Mini-Project is to successfully program the secured,
+ passcode protected candy dispenser, which the passcode is fully user programmable.
 
 
 ***********************************************************************
@@ -34,27 +35,34 @@
  List of project-specific success criteria (functionality that will be
  demonstrated):
 
- 1.
+ 1. Utilize the ATD to obtain the threshold input for the keypad.
 
- 2.
+ 2. Utilize the RTI inturrupt to control the whole system
 
- 3.
+ 3. Utilize PWM to control the servo
 
- 4.
+ 4. Utilize SPI to display information on the LCD display via 8-bit shift register
 
- 5.
+ 5. Make user-friendly interface for the users to take advantage of the
+    user programmable passcode function.
 
 ***********************************************************************
 
-  Date code started: < ? >
+  Date code started: < November 24, 2014 >
 
   Update history (add an entry every time a significant change is made):
 
-  Date: < ? >  Name: < ? >   Update: < ? >
+  Date: < December 03, 2014 >  Name: < John Lee >   Update: < Basic framework >
 
-  Date: < ? >  Name: < ? >   Update: < ? >
+  Date: < December 06, 2014 >  Name: < John Lee >   Update: < Servo, Keypad >
 
-  Date: < ? >  Name: < ? >   Update: < ? >
+  Date: < December 07, 2014 >  Name: < Josh Wroblewski >   Update: < LCD display >
+  
+  Date: < December 07, 2014 >  Name  < John Lee >   Update: < User programmable passcode >
+  
+  Date: < December 08, 2014 >  Name  < Kyunghoon Jung >   Update: < New servo specifications >
+  
+  Date: < December 08, 2014 >  Name  < John Lee >   Update < Duplicate key enabled >
 
 
 ***********************************************************************
